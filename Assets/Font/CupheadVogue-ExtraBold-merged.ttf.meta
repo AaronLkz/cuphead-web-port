@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 14668501723075b4ca7b2d75113de2d2
+timeCreated: 1792014157
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  name:
+  externalObjects: {}
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cuphead Vogue
+  fontNames:
+  - Cuphead Vogue
+  fallbackFontReferences:
+  - {fileID: 0}
+  - {fileID: 12800000, guid: b5585c8c56e72114dba93f919f585c37, type: 3}
+  - {fileID: 12800000, guid: ff57358414c01d944a0c57da8a4d7228, type: 3}
+  - {fileID: 0}
+  - {fileID: 12800000, guid: 0c83c06dbcdeec24983df14a9fb3e978, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  output:
+    hasEmptyFontData: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData:
+  assetBundleName:
+  assetBundleVariant:

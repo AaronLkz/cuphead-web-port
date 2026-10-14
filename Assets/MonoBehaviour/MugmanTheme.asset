@@ -1,0 +1,414 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e3f90b59922ff2c0a10d58d38e29fd, type: 3}
+  m_Name: MugmanTheme
+  m_EditorClassIdentifier:
+  _mainWindowBackground:
+    _color: {r: 1, g: 1, b: 1, a: 1}
+    _sprite: {fileID: 21300000, guid: 00eeb965dfeec8d4d81f973b0965c06a, type: 2}
+    _materal: {fileID: 0}
+    _type: 0
+    _preserveAspect: 0
+    _fillCenter: 1
+    _fillMethod: 0
+    _fillAmout: 0
+    _fillClockwise: 0
+    _fillOrigin: 0
+  _popupWindowBackground:
+    _color: {r: 1, g: 1, b: 1, a: 1}
+    _sprite: {fileID: 21300000, guid: 0de86b72e406bc9448fa9fda2156a4aa, type: 2}
+    _materal: {fileID: 0}
+    _type: 1
+    _preserveAspect: 0
+    _fillCenter: 1
+    _fillMethod: 0
+    _fillAmout: 0
+    _fillClockwise: 0
+    _fillOrigin: 0
+  _areaBackground:
+    _color: {r: 0.05514802, g: 0.07456956, b: 0.08627451, a: 1}
+    _sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _materal: {fileID: 0}
+    _type: 1
+    _preserveAspect: 0
+    _fillCenter: 1
+    _fillMethod: 0
+    _fillAmout: 0
+    _fillClockwise: 0
+    _fillOrigin: 0
+  _selectableSettings:
+    _transition: 1
+    _colors:
+      m_ColorMultiplier: 1
+      m_DisabledColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.3764706}
+      m_FadeDuration: 0.1
+      m_HighlightedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.7529412}
+      m_NormalColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.6901961}
+      m_PressedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.7529412}
+      m_DisabledHighlightedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.3764706}
+    _spriteState:
+      m_DisabledSprite: {fileID: 0}
+      m_HighlightedSprite: {fileID: 0}
+      m_PressedSprite: {fileID: 0}
+      m_DisabledHighlightedSprite: {fileID: 0}
+    _animationTriggers:
+      m_DisabledTrigger:
+      m_HighlightedTrigger:
+      m_NormalTrigger:
+      m_PressedTrigger:
+      m_DisabledHighlightedTrigger:
+    _imageSettings:
+      _color: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.6901961}
+      _sprite: {fileID: 21300000, guid: 9c2718f95665be24796962ab555a55ed, type: 2}
+      _materal: {fileID: 0}
+      _type: 1
+      _preserveAspect: 0
+      _fillCenter: 1
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+  _buttonSettings:
+    _transition: 1
+    _colors:
+      m_ColorMultiplier: 1
+      m_DisabledColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0}
+      m_FadeDuration: 0.1
+      m_HighlightedColor: {r: 0.53333336, g: 0.5176471, b: 0.32156864, a: 0.7529412}
+      m_NormalColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0}
+      m_PressedColor: {r: 0.53333336, g: 0.5176471, b: 0.32156864, a: 0.7529412}
+      m_DisabledHighlightedColor: {r: 0.53333336, g: 0.5176471, b: 0.32156864, a: 0.3764706}
+    _spriteState:
+      m_DisabledSprite: {fileID: 0}
+      m_HighlightedSprite: {fileID: 0}
+      m_PressedSprite: {fileID: 0}
+      m_DisabledHighlightedSprite: {fileID: 0}
+    _animationTriggers:
+      m_DisabledTrigger:
+      m_HighlightedTrigger:
+      m_NormalTrigger:
+      m_PressedTrigger:
+      m_DisabledHighlightedTrigger:
+    _imageSettings:
+      _color: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 1}
+      _sprite: {fileID: 21300000, guid: 682d3cf4356068a4da4d3753d21e463a, type: 2}
+      _materal: {fileID: 0}
+      _type: 1
+      _preserveAspect: 0
+      _fillCenter: 1
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+  _windowButtonSettings:
+    _transition: 2
+    _colors:
+      m_ColorMultiplier: 1
+      m_DisabledColor: {r: 0.8, g: 0.7176471, b: 0.6039216, a: 1}
+      m_FadeDuration: 0.1
+      m_HighlightedColor: {r: 0.53333336, g: 0.5176471, b: 0.32156864, a: 1}
+      m_NormalColor: {r: 0.8, g: 0.7176471, b: 0.6039216, a: 1}
+      m_PressedColor: {r: 0.53333336, g: 0.5176471, b: 0.32156864, a: 1}
+      m_DisabledHighlightedColor: {r: 0.44705883, g: 0.4392157, b: 0.26666668, a: 1}
+    _spriteState:
+      m_DisabledSprite: {fileID: 21300000, guid: e087e41ca50d0684789bd32028a4e73b, type: 2}
+      m_HighlightedSprite: {fileID: 21300000, guid: e2bcfe10a5e408549ae203225e8c37c7, type: 2}
+      m_PressedSprite: {fileID: 21300000, guid: 562b10d9c29b70642b7212154bc85e99, type: 2}
+      m_DisabledHighlightedSprite: {fileID: 21300000, guid: e087e41ca50d0684789bd32028a4e73b, type: 2}
+    _animationTriggers:
+      m_DisabledTrigger:
+      m_HighlightedTrigger:
+      m_NormalTrigger:
+      m_PressedTrigger:
+      m_DisabledHighlightedTrigger:
+    _imageSettings:
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _sprite: {fileID: 21300000, guid: e087e41ca50d0684789bd32028a4e73b, type: 2}
+      _materal: {fileID: 0}
+      _type: 0
+      _preserveAspect: 0
+      _fillCenter: 0
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+  _playerButtonSettings:
+    _transition: 1
+    _colors:
+      m_ColorMultiplier: 1
+      m_DisabledColor: {r: 0.44705883, g: 0.4392157, b: 0.26666668, a: 1}
+      m_FadeDuration: 0.1
+      m_HighlightedColor: {r: 0.7921569, g: 0.69803923, b: 0.5647059, a: 1}
+      m_NormalColor: {r: 0.44705883, g: 0.4392157, b: 0.26666668, a: 1}
+      m_PressedColor: {r: 0.9632353, g: 0.8870362, b: 0.77908736, a: 1}
+      m_DisabledHighlightedColor: {r: 0.7921569, g: 0.69803923, b: 0.5647059, a: 1}
+    _spriteState:
+      m_DisabledSprite: {fileID: 0}
+      m_HighlightedSprite: {fileID: 0}
+      m_PressedSprite: {fileID: 0}
+      m_DisabledHighlightedSprite: {fileID: 0}
+    _animationTriggers:
+      m_DisabledTrigger:
+      m_HighlightedTrigger:
+      m_NormalTrigger:
+      m_PressedTrigger:
+      m_DisabledHighlightedTrigger:
+    _imageSettings:
+      _color: {r: 0.7921569, g: 0.69803923, b: 0.5647059, a: 1}
+      _sprite: {fileID: 21300000, guid: ef0089c2ce768d248904e5710622ddba, type: 2}
+      _materal: {fileID: 0}
+      _type: 1
+      _preserveAspect: 0
+      _fillCenter: 1
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+  _inputGridFieldSettings:
+    _transition: 1
+    _colors:
+      m_ColorMultiplier: 1
+      m_DisabledColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0}
+      m_FadeDuration: 0.1
+      m_HighlightedColor: {r: 0.53333336, g: 0.5176471, b: 0.32156864, a: 0.7529412}
+      m_NormalColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0}
+      m_PressedColor: {r: 0.53333336, g: 0.5176471, b: 0.32156864, a: 0.7529412}
+      m_DisabledHighlightedColor: {r: 0.53333336, g: 0.5176471, b: 0.32156864, a: 0.3764706}
+    _spriteState:
+      m_DisabledSprite: {fileID: 0}
+      m_HighlightedSprite: {fileID: 0}
+      m_PressedSprite: {fileID: 0}
+      m_DisabledHighlightedSprite: {fileID: 0}
+    _animationTriggers:
+      m_DisabledTrigger:
+      m_HighlightedTrigger:
+      m_NormalTrigger:
+      m_PressedTrigger:
+      m_DisabledHighlightedTrigger:
+    _imageSettings:
+      _color: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.6901961}
+      _sprite: {fileID: 21300000, guid: b610529703ad436448793a8973448856, type: 2}
+      _materal: {fileID: 0}
+      _type: 1
+      _preserveAspect: 0
+      _fillCenter: 1
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+  _scrollbarSettings:
+    _transition: 1
+    _colors:
+      m_ColorMultiplier: 1
+      m_DisabledColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.3764706}
+      m_FadeDuration: 0.1
+      m_HighlightedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.7529412}
+      m_NormalColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.6901961}
+      m_PressedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.7529412}
+      m_DisabledHighlightedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.3764706}
+    _spriteState:
+      m_DisabledSprite: {fileID: 0}
+      m_HighlightedSprite: {fileID: 0}
+      m_PressedSprite: {fileID: 0}
+      m_DisabledHighlightedSprite: {fileID: 0}
+    _animationTriggers:
+      m_DisabledTrigger:
+      m_HighlightedTrigger:
+      m_NormalTrigger:
+      m_PressedTrigger:
+      m_DisabledHighlightedTrigger:
+    _handleImageSettings:
+      _color: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.6901961}
+      _sprite: {fileID: 21300000, guid: 9c2718f95665be24796962ab555a55ed, type: 2}
+      _materal: {fileID: 0}
+      _type: 1
+      _preserveAspect: 0
+      _fillCenter: 1
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+    _backgroundImageSettings:
+      _color: {r: 1, g: 1, b: 1, a: 0.559}
+      _sprite: {fileID: 21300000, guid: 8c974d541c7ed9941a08cf44e4709535, type: 2}
+      _materal: {fileID: 0}
+      _type: 1
+      _preserveAspect: 0
+      _fillCenter: 1
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+  _sliderSettings:
+    _transition: 1
+    _colors:
+      m_ColorMultiplier: 1
+      m_DisabledColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.3764706}
+      m_FadeDuration: 0.1
+      m_HighlightedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.7529412}
+      m_NormalColor: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.6901961}
+      m_PressedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.7529412}
+      m_DisabledHighlightedColor: {r: 0.84313726, g: 0.2, b: 0, a: 0.3764706}
+    _spriteState:
+      m_DisabledSprite: {fileID: 0}
+      m_HighlightedSprite: {fileID: 0}
+      m_PressedSprite: {fileID: 0}
+      m_DisabledHighlightedSprite: {fileID: 0}
+    _animationTriggers:
+      m_DisabledTrigger:
+      m_HighlightedTrigger:
+      m_NormalTrigger:
+      m_PressedTrigger:
+      m_DisabledHighlightedTrigger:
+    _handleImageSettings:
+      _color: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.6901961}
+      _sprite: {fileID: 21300000, guid: 9c2718f95665be24796962ab555a55ed, type: 2}
+      _materal: {fileID: 0}
+      _type: 0
+      _preserveAspect: 0
+      _fillCenter: 0
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+    _fillImageSettings:
+      _color: {r: 0.45882356, g: 0.3954879, b: 0.30048442, a: 1}
+      _sprite: {fileID: 21300000, guid: 41440afb87bfc8f42a8a1a9efcc4d38a, type: 2}
+      _materal: {fileID: 0}
+      _type: 1
+      _preserveAspect: 0
+      _fillCenter: 1
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+    _backgroundImageSettings:
+      _color: {r: 0.9529412, g: 0.8745098, b: 0.8, a: 0.6901961}
+      _sprite: {fileID: 21300000, guid: 9c2718f95665be24796962ab555a55ed, type: 2}
+      _materal: {fileID: 0}
+      _type: 1
+      _preserveAspect: 0
+      _fillCenter: 1
+      _fillMethod: 0
+      _fillAmout: 0
+      _fillClockwise: 0
+      _fillOrigin: 0
+  _invertToggle:
+    _color: {r: 0.7921569, g: 0.69803923, b: 0.5647059, a: 1}
+    _sprite: {fileID: 0}
+    _materal: {fileID: 0}
+    _type: 0
+    _preserveAspect: 0
+    _fillCenter: 0
+    _fillMethod: 0
+    _fillAmout: 0
+    _fillClockwise: 0
+    _fillOrigin: 0
+  _invertToggleDisabledColor: {r: 0.7921569, g: 0.69803923, b: 0.5647059, a: 0}
+  _calibrationValueMarker:
+    _color: {r: 1, g: 1, b: 1, a: 1}
+    _sprite: {fileID: 21300000, guid: c37f1f09076620e47b5f8d0ad287b556, type: 2}
+    _materal: {fileID: 0}
+    _type: 0
+    _preserveAspect: 0
+    _fillCenter: 0
+    _fillMethod: 0
+    _fillAmout: 0
+    _fillClockwise: 0
+    _fillOrigin: 0
+  _calibrationRawValueMarker:
+    _color: {r: 0.30048442, g: 0.39928094, b: 0.45882353, a: 1}
+    _sprite: {fileID: 21300000, guid: c37f1f09076620e47b5f8d0ad287b556, type: 2}
+    _materal: {fileID: 0}
+    _type: 0
+    _preserveAspect: 0
+    _fillCenter: 0
+    _fillMethod: 0
+    _fillAmout: 0
+    _fillClockwise: 0
+    _fillOrigin: 0
+  _textSettings:
+    _color: {r: 0.18039216, g: 0.1764706, b: 0.17254902, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 0
+  _buttonTextSettings:
+    _color: {r: 0.18039216, g: 0.1764706, b: 0.17254902, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 0
+  _windowButtonTextSettings:
+    _color: {r: 0.8, g: 0.7176471, b: 0.6039216, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 0
+  _playerButtonTextSettings:
+    _color: {r: 0, g: 0, b: 0, a: 1}
+    _fontTypes: 0600000006000000060000000600000006000000060000000e000000060000000600000006000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 0
+  _playerDropdownButtonTextSettings:
+    _color: {r: 0, g: 0, b: 0, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 14
+  _restoreDefaultButtonTextSettings:
+    _color: {r: 0, g: 0, b: 0, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 0
+  _actionColumnTextSettings:
+    _color: {r: 0.25490198, g: 0.2509804, b: 0.25882354, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 19
+  _actionColumnDeactivatedTextSettings:
+    _color: {r: 0.25490198, g: 0.2509804, b: 0.25882354, a: 0.5019608}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 19
+  _actionColumnHeaderTextSettings:
+    _color: {r: 0.25490198, g: 0.2509804, b: 0.25882354, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style:
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 20
+  _inputColumnHeaderTextSettings:
+    _color: {r: 0.44705883, g: 0.4392157, b: 0.26666668, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 20
+  _inputGridFieldTextSettings:
+    _color: {r: 0.18039216, g: 0.1764706, b: 0.17254902, a: 1}
+    _fontTypes: 0500000005000000050000000500000005000000050000000e000000050000000500000005000000070000000b000000
+    _style: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _lineSpacing: 1
+    _sizeMultiplier: 1
+    _overrideSize: 0
