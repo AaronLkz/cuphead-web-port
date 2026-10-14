@@ -50,14 +50,39 @@ jobs:
           unityVersion: 2021.3.11f1
           buildMethod: BuildWebGL.PerformBuild
           buildsPath: build
+          customParameters: -logFile /github/workspace/unity-build.log
+
+      - name: Print Unity Log Summary
+        if: always()
+        run: |
+          echo "=========================================================="
+          echo "CHECKING UNITY BUILD LOG"
+          echo "=========================================================="
+          if [ -f unity-build.log ]; then
+            echo "--- ERRORS / WARNINGS / COMPILER MESSAGES ---"
+            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED)" unity-build.log | head -n 100 || true
+            echo "--- LAST 100 LINES OF UNITY BUILD LOG ---"
+            tail -n 100 unity-build.log
+          else
+            echo "unity-build.log not found in workspace."
+          fi
+
+      - name: Upload Unity Build Log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-editor-log
+          path: unity-build.log
 
       - name: Upload WebGL Build Artifact
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: Cuphead-Isla1-WebGL
           path: build/WebGL
 
       - name: Package for GitHub Pages
+        if: success()
         uses: actions/upload-pages-artifact@v3
         with:
           path: build/WebGL

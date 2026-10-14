@@ -70,6 +70,19 @@ public class BuildWebGL
 
         var report = BuildPipeline.BuildPlayer(options);
         Debug.Log("[BuildWebGL] Build process completed with result: " + report.summary.result);
+
+        if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded)
+        {
+            Debug.LogError(string.Format("[BuildWebGL] Build FAILED! Total errors: {0}, Total warnings: {1}", 
+                report.summary.totalErrors, report.summary.totalWarnings));
+            EditorApplication.Exit(1);
+        }
+        else
+        {
+            Debug.Log(string.Format("[BuildWebGL] Build SUCCEEDED! Total time: {0}, Size: {1} bytes", 
+                report.summary.totalTime, report.summary.totalSize));
+            EditorApplication.Exit(0);
+        }
     }
 }
 #endif

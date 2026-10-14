@@ -1,5 +1,4 @@
 using System.IO;
-using Galaxy.Api;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -11,7 +10,7 @@ public class GogGalaxyManager : MonoBehaviour
 
 	private static GogGalaxyManager singleton;
 
-	private bool isInitialized;
+	private bool isInitialized = false;
 
 	public static GogGalaxyManager Instance
 	{
@@ -27,7 +26,7 @@ public class GogGalaxyManager : MonoBehaviour
 
 	public static bool IsInitialized()
 	{
-		return singleton != null && singleton.isInitialized;
+		return false;
 	}
 
 	private string GetGalaxyPeerDLLPath()
@@ -44,18 +43,7 @@ public class GogGalaxyManager : MonoBehaviour
 		}
 		singleton = this;
 		Object.DontDestroyOnLoad(base.gameObject);
-		try
-		{
-			InitParams initpParams = new InitParams(clientID, clientSecret, GetGalaxyPeerDLLPath());
-			GalaxyInstance.Init(initpParams);
-		}
-		catch (GalaxyInstance.Error error)
-		{
-			Debug.LogError("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
-			return;
-		}
-		Debug.Log("Galaxy SDK was initialized", this);
-		isInitialized = true;
+		Debug.Log("[GogGalaxyManager] Running in offline/WebGL stub mode.");
 	}
 
 	private void OnDestroy()
@@ -63,18 +51,10 @@ public class GogGalaxyManager : MonoBehaviour
 		if (!(singleton != this))
 		{
 			singleton = null;
-			if (isInitialized)
-			{
-				GalaxyInstance.Shutdown();
-			}
 		}
 	}
 
 	private void Update()
 	{
-		if (isInitialized)
-		{
-			GalaxyInstance.ProcessData();
-		}
 	}
 }
