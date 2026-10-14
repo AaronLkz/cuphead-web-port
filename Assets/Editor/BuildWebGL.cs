@@ -57,8 +57,9 @@ public class BuildWebGL
         }
         EditorBuildSettings.scenes = buildScenes;
 
-        // Player Settings for WebGL
-        PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
+        // Player Settings for WebGL (Disabled compression is required for GitHub Pages)
+        PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
+        PlayerSettings.WebGL.decompressionFallback = true;
         PlayerSettings.runInBackground = true;
 
         BuildPlayerOptions options = new BuildPlayerOptions();

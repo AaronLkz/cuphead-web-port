@@ -1,4 +1,4 @@
-name: Build Cuphead WebGL (Isla 1)
+name: Build and Deploy Cuphead WebGL to GitHub Pages
 
 on:
   push:
@@ -9,6 +9,10 @@ permissions:
   contents: write
   pages: write
   id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -51,3 +55,20 @@ jobs:
         with:
           name: Cuphead-Isla1-WebGL
           path: build/WebGL
+
+      - name: Package for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/WebGL
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
