@@ -141,9 +141,17 @@ jobs:
             rm -rf build/WebGL/WebGL
           fi
 
+          if [ -d "Assets/StreamingAssets" ] && [ ! -d "build/WebGL/StreamingAssets" ]; then
+            echo "Copying Assets/StreamingAssets to build/WebGL/StreamingAssets..."
+            cp -a Assets/StreamingAssets build/WebGL/
+          fi
+
           touch build/WebGL/.nojekyll
           echo "Final build/WebGL contents:"
           ls -la build/WebGL
+          if [ -d "build/WebGL/StreamingAssets/AssetBundles" ]; then
+            echo "StreamingAssets bundle count: $(ls -1 build/WebGL/StreamingAssets/AssetBundles | wc -l)"
+          fi
 
       - name: Deploy to gh-pages Branch
         if: success()

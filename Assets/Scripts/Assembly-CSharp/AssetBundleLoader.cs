@@ -180,7 +180,16 @@ public class AssetBundleLoader : MonoBehaviour
 		if (!loadedBundles.TryGetValue(assetBundleName, out assetBundleContainer))
 		{
 			yield return StartCoroutine(loadAssetBundle(assetBundleName, location));
-			assetBundleContainer = loadedBundles[assetBundleName];
+			if (!loadedBundles.TryGetValue(assetBundleName, out assetBundleContainer) || assetBundleContainer == null || assetBundleContainer.assetBundle == null)
+			{
+				Debug.LogError("[AssetBundleLoader] Bundle failed to load: " + assetBundleName);
+				if (completionHandler != null)
+				{
+					completionHandler(null);
+				}
+				loadCounter--;
+				yield break;
+			}
 		}
 		AssetBundleRequest assetRequest = assetBundleContainer.assetBundle.LoadAssetAsync<T>(assetName);
 		yield return assetRequest;
@@ -200,7 +209,16 @@ public class AssetBundleLoader : MonoBehaviour
 		if (!loadedBundles.TryGetValue(assetBundleName, out assetBundleContainer))
 		{
 			yield return StartCoroutine(loadAssetBundle(assetBundleName, location));
-			assetBundleContainer = loadedBundles[assetBundleName];
+			if (!loadedBundles.TryGetValue(assetBundleName, out assetBundleContainer) || assetBundleContainer == null || assetBundleContainer.assetBundle == null)
+			{
+				Debug.LogError("[AssetBundleLoader] Bundle failed to load: " + assetBundleName);
+				if (completionHandler != null)
+				{
+					completionHandler(new T[0]);
+				}
+				loadCounter--;
+				yield break;
+			}
 		}
 		AssetBundleRequest assetRequest = assetBundleContainer.assetBundle.LoadAllAssetsAsync<T>();
 		yield return assetRequest;
