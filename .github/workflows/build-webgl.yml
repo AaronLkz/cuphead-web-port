@@ -124,13 +124,23 @@ jobs:
           git commit -m "Build logs from run ${{ github.run_id }}" || true
           git push -f origin build-logs || true
 
+      - name: Fix build output permissions
+        if: always()
+        run: |
+          if [ -d build ]; then
+            sudo chown -R "$(id -u):$(id -g)" build
+            sudo chmod -R u+rwX build
+          fi
+
       - name: Normalize WebGL Output Directory
         if: success()
         run: |
           if [ -d "build/WebGL/WebGL" ] && [ -f "build/WebGL/WebGL/index.html" ]; then
             echo "Normalizing build/WebGL directory layout..."
-            cp -r build/WebGL/WebGL/* build/WebGL/
+            cp -a build/WebGL/WebGL/. build/WebGL/
+            rm -rf build/WebGL/WebGL
           fi
+
           touch build/WebGL/.nojekyll
           echo "Final build/WebGL contents:"
           ls -la build/WebGL
