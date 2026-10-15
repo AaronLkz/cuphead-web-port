@@ -9,6 +9,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: "pages"
@@ -50,21 +51,29 @@ jobs:
           unityVersion: 2021.3.11f1
           buildMethod: BuildWebGL.PerformBuild
           buildsPath: build
-          customParameters: -logFile /github/workspace/unity-build.log
 
       - name: Print Unity Log Summary
         if: always()
         run: |
           echo "=========================================================="
-          echo "CHECKING UNITY BUILD LOG"
+          echo "CHECKING RUNNER / UNITY LOGS"
           echo "=========================================================="
-          if [ -f unity-build.log ]; then
+          FOUND_LOG=""
+          for candidate in $(sudo find /home/runner /tmp -name "Worker_*.log" -o -name "Editor.log" -o -name "unity-build.log" 2>/dev/null); do
+            if [ -s "$candidate" ]; then
+              FOUND_LOG="$candidate"
+              echo "Found candidate log: $candidate ($(wc -l < "$candidate") lines)"
+              break
+            fi
+          done
+          if [ -n "$FOUND_LOG" ]; then
             echo "--- ERRORS / WARNINGS / COMPILER MESSAGES ---"
-            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED)" unity-build.log | head -n 100 || true
-            echo "--- LAST 100 LINES OF UNITY BUILD LOG ---"
-            tail -n 100 unity-build.log
+            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Assertion failed|SIGTRAP)" "$FOUND_LOG" | head -n 100 || true
+            echo "--- LAST 100 LINES OF BUILD LOG ---"
+            tail -n 100 "$FOUND_LOG"
+            cp "$FOUND_LOG" unity-build.log || true
           else
-            echo "unity-build.log not found in workspace."
+            echo "No log file found on runner."
           fi
 
       - name: Upload Unity Build Log
@@ -73,6 +82,7 @@ jobs:
         with:
           name: unity-editor-log
           path: unity-build.log
+          if-no-files-found: ignore
 
       - name: Publish Logs to Branch
         if: always()
@@ -83,12 +93,21 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout --orphan build-logs 2>/dev/null || git checkout -B build-logs || true
           git rm -rf . 2>/dev/null || true
-          if [ -f "$GITHUB_WORKSPACE/unity-build.log" ]; then
-            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Fatal|Abort)" "$GITHUB_WORKSPACE/unity-build.log" > build-errors.txt || true
-            tail -n 300 "$GITHUB_WORKSPACE/unity-build.log" > build-tail.txt || true
+          
+          FOUND_LOG=""
+          for candidate in $(sudo find /home/runner /tmp -name "Worker_*.log" -o -name "Editor.log" -o -name "unity-build.log" 2>/dev/null); do
+            if [ -s "$candidate" ]; then
+              FOUND_LOG="$candidate"
+              break
+            fi
+          done
+          
+          if [ -n "$FOUND_LOG" ]; then
+            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Assertion failed|SIGTRAP|Fatal|Abort)" "$FOUND_LOG" > build-errors.txt || true
+            tail -n 400 "$FOUND_LOG" > build-tail.txt || true
           else
-            echo "unity-build.log not found" > build-errors.txt
-            echo "unity-build.log not found" > build-tail.txt
+            echo "No candidate log found during build job step" > build-errors.txt
+            echo "No candidate log found during build job step" > build-tail.txt
           fi
           git add build-errors.txt build-tail.txt || true
           git commit -m "Build logs from run ${{ github.run_id }}" || true
@@ -118,3 +137,39 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  diagnose:
+    name: Diagnose Build Errors
+    needs: build
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Job Logs via GitHub API
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== RETRIEVING FAILED JOB LOGS VIA GH CLI ==="
+          BUILD_JOB_ID=$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs" --jq '.jobs[] | select(.name=="Build WebGL in Cloud") | .id' 2>/dev/null || echo "")
+          echo "Failed Build Job ID: $BUILD_JOB_ID"
+          if [ -n "$BUILD_JOB_ID" ]; then
+            gh api "repos/${{ github.repository }}/actions/jobs/$BUILD_JOB_ID/logs" > /tmp/api_job.log 2>/dev/null || true
+          fi
+          
+          git clone --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git /tmp/log_repo || true
+          cd /tmp/log_repo || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan build-logs 2>/dev/null || git checkout -B build-logs || true
+          git rm -rf . 2>/dev/null || true
+          
+          if [ -s /tmp/api_job.log ]; then
+            echo "--- API JOB LOG EXTRACTED SUCCESSFULLY ---"
+            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Assertion failed|SIGTRAP|Fatal|Abort)" /tmp/api_job.log > build-errors.txt || true
+            tail -n 400 /tmp/api_job.log > build-tail.txt || true
+          else
+            echo "No API job log captured" > build-errors.txt
+            echo "No API job log captured" > build-tail.txt
+          fi
+          git add build-errors.txt build-tail.txt || true
+          git commit -m "Diagnostics from run ${{ github.run_id }}" || true
+          git push -f origin build-logs || true

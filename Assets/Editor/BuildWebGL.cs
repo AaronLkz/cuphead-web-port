@@ -73,16 +73,14 @@ public class BuildWebGL
 
         if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded)
         {
-            Debug.LogError(string.Format("[BuildWebGL] Build FAILED! Total errors: {0}, Total warnings: {1}", 
-                report.summary.totalErrors, report.summary.totalWarnings));
-            EditorApplication.Exit(1);
+            string errorMsg = string.Format("[BuildWebGL] Build FAILED! Result: {0}, Total errors: {1}, Total warnings: {2}", 
+                report.summary.result, report.summary.totalErrors, report.summary.totalWarnings);
+            Debug.LogError(errorMsg);
+            throw new Exception(errorMsg);
         }
-        else
-        {
-            Debug.Log(string.Format("[BuildWebGL] Build SUCCEEDED! Total time: {0}, Size: {1} bytes", 
-                report.summary.totalTime, report.summary.totalSize));
-            EditorApplication.Exit(0);
-        }
+
+        Debug.Log(string.Format("[BuildWebGL] Build SUCCEEDED! Total time: {0}, Size: {1} bytes", 
+            report.summary.totalTime, report.summary.totalSize));
     }
 }
 #endif
