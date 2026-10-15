@@ -60,7 +60,7 @@ public class BuildWebGL
         EditorBuildSettings.scenes = buildScenes;
 
         // Player Settings for WebGL (Disabled compression is required for GitHub Pages)
-        PlayerSettings.WebGL.template = "APPLICATION:default";
+        PlayerSettings.WebGL.template = "PROJECT:Cuphead";
         PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
         PlayerSettings.WebGL.decompressionFallback = false;
         PlayerSettings.runInBackground = true;
