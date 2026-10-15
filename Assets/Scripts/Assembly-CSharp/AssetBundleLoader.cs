@@ -193,7 +193,19 @@ public class AssetBundleLoader : MonoBehaviour
 		}
 		AssetBundleRequest assetRequest = assetBundleContainer.assetBundle.LoadAssetAsync<T>(assetName);
 		yield return assetRequest;
-		completionHandler(assetRequest.asset as T);
+		T loadedAsset = assetRequest.asset as T;
+		if (loadedAsset == null)
+		{
+			T[] all = assetBundleContainer.assetBundle.LoadAllAssets<T>();
+			if (all != null && all.Length > 0)
+			{
+				loadedAsset = all[0];
+			}
+		}
+		if (completionHandler != null)
+		{
+			completionHandler(loadedAsset);
+		}
 		if (assetBundleContainer.location == AssetBundleLocation.DLC && DLCManager.UnloadBundlesImmediately() && typeof(T) == typeof(SpriteAtlas))
 		{
 			loadedBundles.Remove(assetBundleContainer.assetBundle.name);
@@ -228,7 +240,10 @@ public class AssetBundleLoader : MonoBehaviour
 		{
 			castAssets[i] = (T)allAssets[i];
 		}
-		completionHandler(castAssets);
+		if (completionHandler != null)
+		{
+			completionHandler(castAssets);
+		}
 		loadCounter--;
 	}
 

@@ -63,6 +63,7 @@ public class BuildWebGL
         PlayerSettings.WebGL.template = "PROJECT:Cuphead";
         PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
         PlayerSettings.WebGL.decompressionFallback = false;
+        PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.FullWithStacktrace;
         PlayerSettings.runInBackground = true;
 
         BuildPlayerOptions options = new BuildPlayerOptions();

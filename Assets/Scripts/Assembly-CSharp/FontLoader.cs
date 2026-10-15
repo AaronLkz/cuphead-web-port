@@ -291,7 +291,10 @@ public static class FontLoader
 			Action<Font> completionHandler = (Font font) =>
 			{
 				FontType key = fontType;
-				FontCache.Add(key, font);
+				if (font != null)
+				{
+					FontCache[key] = font;
+				}
 			};
 			array[i - 1] = AssetBundleLoader.LoadFont(bundleName, GetFilename(fontType), completionHandler);
 		}
@@ -301,20 +304,24 @@ public static class FontLoader
 			string bundleName2 = fontType2.ToString();
 			Action<UnityEngine.Object[]> completionHandler2 = (UnityEngine.Object[] objects) =>
 			{
+				if (objects == null)
+				{
+					return;
+				}
 				foreach (UnityEngine.Object obj in objects)
 				{
+					if (obj == null)
+					{
+						continue;
+					}
 					if (obj is TMP_FontAsset)
 					{
 						TMPFontType key = fontType2;
-						TMPFontCache.Add(key, (TMP_FontAsset)obj);
+						TMPFontCache[key] = (TMP_FontAsset)obj;
 					}
-					else
+					else if (obj is Material)
 					{
-						if (!(obj is Material))
-						{
-							throw new Exception("Unhandled object type: " + obj.GetType());
-						}
-						TMPMaterialCache.Add(obj.name, (Material)obj);
+						TMPMaterialCache[obj.name] = (Material)obj;
 					}
 				}
 			};
@@ -329,7 +336,12 @@ public static class FontLoader
 		{
 			return null;
 		}
-		return FontCache[fontType];
+		Font font;
+		if (FontCache.TryGetValue(fontType, out font))
+		{
+			return font;
+		}
+		return null;
 	}
 
 	public static TMP_FontAsset GetTMPFont(TMPFontType fontType)
@@ -338,12 +350,26 @@ public static class FontLoader
 		{
 			return null;
 		}
-		return TMPFontCache[fontType];
+		TMP_FontAsset fontAsset;
+		if (TMPFontCache.TryGetValue(fontType, out fontAsset))
+		{
+			return fontAsset;
+		}
+		return null;
 	}
 
 	public static Material GetTMPMaterial(string materialName)
 	{
-		return TMPMaterialCache[materialName];
+		if (string.IsNullOrEmpty(materialName))
+		{
+			return null;
+		}
+		Material material;
+		if (TMPMaterialCache.TryGetValue(materialName, out material))
+		{
+			return material;
+		}
+		return null;
 	}
 
 	public static string ConvertAssetNameToEnumName(string assetName)

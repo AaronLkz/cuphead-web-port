@@ -122,11 +122,12 @@ public abstract class AssetLoader<T> : MonoBehaviour where T : class
 	public static T GetCachedAsset(string assetName)
 	{
 		T asset;
-		if (Instance.tryGetAsset(assetName, out asset))
+		if (Instance != null && Instance.tryGetAsset(assetName, out asset))
 		{
 			return asset;
 		}
-		throw new Exception("Asset not cached: " + assetName);
+		Debug.LogWarning("[AssetLoader] Asset not cached: " + assetName);
+		return null;
 	}
 
 	public static void UnloadAssets(params string[] persistentTagsToUnload)
