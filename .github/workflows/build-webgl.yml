@@ -124,6 +124,32 @@ jobs:
           git commit -m "Build logs from run ${{ github.run_id }}" || true
           git push -f origin build-logs || true
 
+      - name: Normalize WebGL Output Directory
+        if: success()
+        run: |
+          if [ -d "build/WebGL/WebGL" ] && [ -f "build/WebGL/WebGL/index.html" ]; then
+            echo "Normalizing build/WebGL directory layout..."
+            cp -r build/WebGL/WebGL/* build/WebGL/
+          fi
+          touch build/WebGL/.nojekyll
+          echo "Final build/WebGL contents:"
+          ls -la build/WebGL
+
+      - name: Deploy to gh-pages Branch
+        if: success()
+        run: |
+          git clone --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git /tmp/gh_pages || true
+          cd /tmp/gh_pages || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan gh-pages 2>/dev/null || git checkout -B gh-pages || true
+          git rm -rf . 2>/dev/null || true
+          cp -r "$GITHUB_WORKSPACE"/build/WebGL/* ./
+          touch .nojekyll
+          git add -A
+          git commit -m "Deploy WebGL build from run ${{ github.run_id }}" || true
+          git push -f origin gh-pages || true
+
       - name: Upload WebGL Build Artifact
         if: success()
         uses: actions/upload-artifact@v4
