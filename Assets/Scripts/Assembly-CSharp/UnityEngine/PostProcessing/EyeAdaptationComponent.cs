@@ -43,7 +43,11 @@ namespace UnityEngine.PostProcessing
 		{
 			get
 			{
+#if UNITY_WEBGL
+				return false;
+#else
 				return base.model.enabled && SystemInfo.supportsComputeShaders && !context.interrupted;
+#endif
 			}
 		}
 
@@ -87,6 +91,9 @@ namespace UnityEngine.PostProcessing
 
 		public Texture Prepare(RenderTexture source, Material uberMaterial)
 		{
+#if UNITY_WEBGL
+			return null;
+#else
 			EyeAdaptationModel.Settings settings = base.model.settings;
 			if (m_EyeCompute == null)
 			{
@@ -161,6 +168,7 @@ namespace UnityEngine.PostProcessing
 			}
 			m_FirstFrame = false;
 			return m_CurrentAutoExposure;
+#endif
 		}
 
 		public void OnGUI()

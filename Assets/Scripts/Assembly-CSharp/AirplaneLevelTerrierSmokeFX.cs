@@ -8,9 +8,12 @@ public class AirplaneLevelTerrierSmokeFX : Effect
 
 	public bool dead;
 
-	public new bool inUse = true;
-
 	public Transform myTransform;
+
+	public AirplaneLevelTerrierSmokeFX()
+	{
+		inUse = true;
+	}
 
 	public void Step(float t)
 	{

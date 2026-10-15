@@ -106,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4}
   - component: {fileID: 5}
-  - component: {fileID: 7}
   - component: {fileID: 9}
   - component: {fileID: 6}
   m_Layer: 0
@@ -180,13 +179,6 @@ Camera:
   m_StereoSeparation: 0.022
 --- !u!81 &6
 AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2}
-  m_Enabled: 1
---- !u!92 &7
-GUILayer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}

@@ -60,7 +60,7 @@ jobs:
           echo "CHECKING RUNNER / UNITY LOGS"
           echo "=========================================================="
           FOUND_LOG=""
-          for candidate in $(sudo find /home/runner /tmp -name "Worker_*.log" -o -name "Editor.log" -o -name "unity-build.log" 2>/dev/null); do
+          for candidate in $(sudo find /home/runner/.config /root/.config /tmp -name "Editor.log" 2>/dev/null) $(sudo find /home/runner /tmp -name "Worker_*.log" 2>/dev/null) /home/runner/.config/unity3d/Editor.log; do
             if [ -s "$candidate" ]; then
               FOUND_LOG="$candidate"
               echo "Found candidate log: $candidate ($(wc -l < "$candidate") lines)"
@@ -96,7 +96,7 @@ jobs:
           git rm -rf . 2>/dev/null || true
           
           FOUND_LOG=""
-          for candidate in $(sudo find /home/runner /tmp -name "Worker_*.log" -o -name "Editor.log" -o -name "unity-build.log" 2>/dev/null); do
+          for candidate in $(sudo find /home/runner/.config /root/.config /tmp -name "Editor.log" 2>/dev/null) $(sudo find /home/runner /tmp -name "Worker_*.log" 2>/dev/null) /home/runner/.config/unity3d/Editor.log; do
             if [ -s "$candidate" ]; then
               FOUND_LOG="$candidate"
               break
