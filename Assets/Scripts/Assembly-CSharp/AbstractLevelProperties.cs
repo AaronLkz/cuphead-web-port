@@ -15,15 +15,6 @@ public abstract class AbstractLevelProperties<STATE, PATTERN, STATE_NAMES> where
 
 	private int stateIndex;
 
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	private OnBossDamagedHandler OnBossDamaged__BackingField;
-
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	private Action OnBossDeath__BackingField;
-
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	private Action OnStateChange__BackingField;
-
 	public float CurrentHealth { get; private set; }
 
 	public STATE CurrentState
@@ -35,83 +26,11 @@ public abstract class AbstractLevelProperties<STATE, PATTERN, STATE_NAMES> where
 		}
 	}
 
-	public event OnBossDamagedHandler OnBossDamaged
-	{
-		add
-		{
-			OnBossDamagedHandler onBossDamagedHandler = this.OnBossDamaged;
-			OnBossDamagedHandler onBossDamagedHandler2;
-			do
-			{
-				onBossDamagedHandler2 = onBossDamagedHandler;
-				onBossDamagedHandler = Interlocked.CompareExchange(ref this.OnBossDamaged, (OnBossDamagedHandler)Delegate.Combine(onBossDamagedHandler2, value), onBossDamagedHandler);
-			}
-			while ((object)onBossDamagedHandler != onBossDamagedHandler2);
-		}
-		remove
-		{
-			OnBossDamagedHandler onBossDamagedHandler = this.OnBossDamaged;
-			OnBossDamagedHandler onBossDamagedHandler2;
-			do
-			{
-				onBossDamagedHandler2 = onBossDamagedHandler;
-				onBossDamagedHandler = Interlocked.CompareExchange(ref this.OnBossDamaged, (OnBossDamagedHandler)Delegate.Remove(onBossDamagedHandler2, value), onBossDamagedHandler);
-			}
-			while ((object)onBossDamagedHandler != onBossDamagedHandler2);
-		}
-	}
+	public event OnBossDamagedHandler OnBossDamaged;
 
-	public event Action OnBossDeath
-	{
-		add
-		{
-			Action action = this.OnBossDeath;
-			Action action2;
-			do
-			{
-				action2 = action;
-				action = Interlocked.CompareExchange(ref this.OnBossDeath, (Action)Delegate.Combine(action2, value), action);
-			}
-			while ((object)action != action2);
-		}
-		remove
-		{
-			Action action = this.OnBossDeath;
-			Action action2;
-			do
-			{
-				action2 = action;
-				action = Interlocked.CompareExchange(ref this.OnBossDeath, (Action)Delegate.Remove(action2, value), action);
-			}
-			while ((object)action != action2);
-		}
-	}
+	public event Action OnBossDeath;
 
-	public event Action OnStateChange
-	{
-		add
-		{
-			Action action = this.OnStateChange;
-			Action action2;
-			do
-			{
-				action2 = action;
-				action = Interlocked.CompareExchange(ref this.OnStateChange, (Action)Delegate.Combine(action2, value), action);
-			}
-			while ((object)action != action2);
-		}
-		remove
-		{
-			Action action = this.OnStateChange;
-			Action action2;
-			do
-			{
-				action2 = action;
-				action = Interlocked.CompareExchange(ref this.OnStateChange, (Action)Delegate.Remove(action2, value), action);
-			}
-			while ((object)action != action2);
-		}
-	}
+	public event Action OnStateChange;
 
 	public AbstractLevelProperties(float hp, Level.GoalTimes goalTimes, STATE[] states)
 	{

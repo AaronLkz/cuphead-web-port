@@ -74,6 +74,25 @@ jobs:
           name: unity-editor-log
           path: unity-build.log
 
+      - name: Publish Logs to Branch
+        if: always()
+        run: |
+          git clone --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git /tmp/log_repo || true
+          cd /tmp/log_repo || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan build-logs 2>/dev/null || git checkout -B build-logs
+          git rm -rf . 2>/dev/null || true
+          if [ -f $GITHUB_WORKSPACE/unity-build.log ]; then
+            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Fatal|Abort)" $GITHUB_WORKSPACE/unity-build.log > build-errors.txt || true
+            tail -n 300 $GITHUB_WORKSPACE/unity-build.log > build-tail.txt
+          else
+            echo "unity-build.log not found" > build-errors.txt
+          fi
+          git add build-errors.txt build-tail.txt
+          git commit -m "Build logs from run ${{ github.run_id }}" || true
+          git push -f origin build-logs || true
+
       - name: Upload WebGL Build Artifact
         if: success()
         uses: actions/upload-artifact@v4
