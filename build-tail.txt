@@ -1,0 +1,400 @@
+[2026-10-15 05:09:08Z INFO StepsRunner] Current state: job state = ''
+[2026-10-15 05:09:08Z INFO StepsRunner] Processing step: DisplayName='Print Unity Log Summary'
+[2026-10-15 05:09:08Z INFO StepsRunner] Evaluating: always()
+[2026-10-15 05:09:08Z INFO StepsRunner] Result: true
+[2026-10-15 05:09:08Z INFO StepsRunner] Starting the step.
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Temp': '/home/runner/work/_temp'
+[2026-10-15 05:09:08Z INFO ExecutionContext] Write event payload to /home/runner/work/_temp/_github_workflow/event.json
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Temp': '/home/runner/work/_temp'
+[2026-10-15 05:09:08Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-10-15 05:09:08Z INFO ArtifactsListFileCommand] Wrote $GITHUB_ARTIFACTS_LIST with 0 subject(s) to '/home/runner/work/_temp/_runner_file_commands/artifacts_list_0bfe1f93-9204-4770-ac33-852aa8ba8af7'
+[2026-10-15 05:09:08Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command error
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command group
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-10-15 05:09:08Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-10-15 05:09:08Z INFO ScriptHandler] Which2: 'bash'
+[2026-10-15 05:09:08Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:08Z INFO HostContext] Well known directory 'Temp': '/home/runner/work/_temp'
+[2026-10-15 05:09:08Z INFO ScriptHandler] Which2: 'bash'
+[2026-10-15 05:09:08Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper] Starting process:
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   File name: '/usr/bin/bash'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   Arguments: '-e /home/runner/work/_temp/3b078fd3-014c-4027-ad0e-0b2f6af5bd10.sh'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   Working directory: '/home/runner/work/cuphead-web-port/cuphead-web-port'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 4747.
+[2026-10-15 05:09:08Z INFO ProcessInvokerWrapper] Process started with process id 4747, waiting for process exit.
+[2026-10-15 05:09:08Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6b051748-fb52-4a4c-b0c2-698013a400bb', success rate: 1/1.
+[2026-10-15 05:09:08Z INFO JobServerQueue] Try to append 1 batches web console lines for record '73dbc3f9-26b1-453f-b120-47244edbcd42', success rate: 1/1.
+[2026-10-15 05:09:08Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-10-15 05:09:09Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-10-15 05:09:09Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/runner/actions-runner/cached/2.337.0/_diag/blocks/0e67fd90-3e7d-8186-b389-cc03458bf0ff_6b051748-fb52-4a4c-b0c2-698013a400bb.2
+[2026-10-15 05:09:09Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-10-15 05:09:09Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:09Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:09Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper] Finished process 4747 with exit code 0, and elapsed time 00:00:01.5004603.
+[2026-10-15 05:09:10Z INFO CreateStepSummaryCommand] Step Summary file (/home/runner/work/_temp/_runner_file_commands/step_summary_0bfe1f93-9204-4770-ac33-852aa8ba8af7) is empty; skipping attachment upload
+[2026-10-15 05:09:10Z INFO CreateArtifactsFileCommand] Processing $GITHUB_ARTIFACTS file '/home/runner/work/_temp/_runner_file_commands/artifacts_0bfe1f93-9204-4770-ac33-852aa8ba8af7'
+[2026-10-15 05:09:10Z INFO CreateArtifactsFileCommand] $GITHUB_ARTIFACTS file is empty; nothing to process.
+[2026-10-15 05:09:10Z INFO StepsRunner] Step result: 
+[2026-10-15 05:09:10Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "sh",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "73dbc3f9-26b1-453f-b120-47244edbcd42",
+  "stepContextName": "__run_2",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2026-10-15T05:09:08.8172114Z",
+  "finishTime": "2026-10-15T05:09:10.3646783Z"
+}.
+[2026-10-15 05:09:10Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-10-15 05:09:10Z INFO StepsRunner] Current state: job state = ''
+[2026-10-15 05:09:10Z INFO StepsRunner] Processing step: DisplayName='Upload Unity Build Log'
+[2026-10-15 05:09:10Z INFO StepsRunner] Evaluating: always()
+[2026-10-15 05:09:10Z INFO StepsRunner] Result: true
+[2026-10-15 05:09:10Z INFO StepsRunner] Starting the step.
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Actions': '/home/runner/work/_actions'
+[2026-10-15 05:09:10Z INFO ActionManager] Load action that reference repository from '/home/runner/work/_actions/actions/upload-artifact/v4'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Actions': '/home/runner/work/_actions'
+[2026-10-15 05:09:10Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-10-15 05:09:10Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Upload a Build Artifact",
+  "description": "Upload a build artifact that can be used by subsequent workflow steps",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 5,
+          "col": 3,
+          "lit": "name"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 7,
+          "col": 14,
+          "lit": "artifact"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 8,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 11,
+          "col": 3,
+          "lit": "if-no-files-found"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 19,
+          "col": 14,
+          "lit": "warn"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 20,
+          "col": 3,
+          "lit": "retention-days"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 26,
+          "col": 3,
+          "lit": "compression-level"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 36,
+          "col": 14,
+          "lit": "6"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 37,
+          "col": 3,
+          "lit": "overwrite"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 42,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 43,
+          "col": 3,
+          "lit": "include-hidden-files"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 47,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": false,
+    "script": "dist/upload/index.js",
+    "pre": null,
+    "post": null,
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-10-15 05:09:10Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-10-15 05:09:10Z INFO ActionManager] Action node.js file: dist/upload/index.js.
+[2026-10-15 05:09:10Z INFO ActionManager] Action post node.js file: N/A.
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Temp': '/home/runner/work/_temp'
+[2026-10-15 05:09:10Z INFO ExecutionContext] Write event payload to /home/runner/work/_temp/_github_workflow/event.json
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Temp': '/home/runner/work/_temp'
+[2026-10-15 05:09:10Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-10-15 05:09:10Z INFO ArtifactsListFileCommand] Wrote $GITHUB_ARTIFACTS_LIST with 0 subject(s) to '/home/runner/work/_temp/_runner_file_commands/artifacts_list_925b19cb-a037-42b4-8e45-6002992ee937'
+[2026-10-15 05:09:10Z INFO ActionManifestManagerLegacy] Input 'retention-days': default value evaluate result: ""
+[2026-10-15 05:09:10Z INFO ActionManifestManagerLegacy] Input 'compression-level': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 36,
+  "col": 14,
+  "lit": "6"
+}
+[2026-10-15 05:09:10Z INFO ActionManifestManagerLegacy] Input 'overwrite': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 42,
+  "col": 14,
+  "lit": "false"
+}
+[2026-10-15 05:09:10Z INFO ActionManifestManagerLegacy] Input 'include-hidden-files': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 47,
+  "col": 14,
+  "lit": "false"
+}
+[2026-10-15 05:09:10Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command error
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command group
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-10-15 05:09:10Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:10Z INFO HostContext] Well known directory 'Externals': '/home/runner/actions-runner/cached/2.337.0/externals'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper] Starting process:
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   File name: '/home/runner/actions-runner/cached/2.337.0/externals/node24/bin/node'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   Arguments: '"/home/runner/work/_actions/actions/upload-artifact/v4/dist/upload/index.js"'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   Working directory: '/home/runner/work/cuphead-web-port/cuphead-web-port'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 4760.
+[2026-10-15 05:09:10Z INFO ProcessInvokerWrapper] Process started with process id 4760, waiting for process exit.
+[2026-10-15 05:09:10Z INFO JobServerQueue] Try to append 2 batches web console lines for record '73dbc3f9-26b1-453f-b120-47244edbcd42', success rate: 2/2.
+[2026-10-15 05:09:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record '1823b6e8-74f4-4740-b9bf-6a37167bd2fe', success rate: 1/1.
+[2026-10-15 05:09:10Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-10-15 05:09:10Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/runner/actions-runner/cached/2.337.0/_diag/blocks/0e67fd90-3e7d-8186-b389-cc03458bf0ff_73dbc3f9-26b1-453f-b120-47244edbcd42.1
+[2026-10-15 05:09:10Z INFO AddMaskCommandExtension] Add new secret mask with length of 44
+[2026-10-15 05:09:10Z INFO AddMaskCommandExtension] Add new secret mask with length of 46
+[2026-10-15 05:09:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record '1823b6e8-74f4-4740-b9bf-6a37167bd2fe', success rate: 1/1.
+[2026-10-15 05:09:10Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-10-15 05:09:11Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-10-15 05:09:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record '1823b6e8-74f4-4740-b9bf-6a37167bd2fe', success rate: 1/1.
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper] Finished process 4760 with exit code 0, and elapsed time 00:00:01.0938480.
+[2026-10-15 05:09:11Z INFO CreateStepSummaryCommand] Step Summary file (/home/runner/work/_temp/_runner_file_commands/step_summary_925b19cb-a037-42b4-8e45-6002992ee937) is empty; skipping attachment upload
+[2026-10-15 05:09:11Z INFO CreateArtifactsFileCommand] Processing $GITHUB_ARTIFACTS file '/home/runner/work/_temp/_runner_file_commands/artifacts_925b19cb-a037-42b4-8e45-6002992ee937'
+[2026-10-15 05:09:11Z INFO CreateArtifactsFileCommand] $GITHUB_ARTIFACTS file is empty; nothing to process.
+[2026-10-15 05:09:11Z INFO StepsRunner] Step result: 
+[2026-10-15 05:09:11Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/upload-artifact",
+  "ref": "v4",
+  "type": "node24",
+  "stage": "Main",
+  "stepId": "1823b6e8-74f4-4740-b9bf-6a37167bd2fe",
+  "stepContextName": "__actions_upload-artifact",
+  "hasPreStep": false,
+  "hasPostStep": false,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2026-10-15T05:09:10.3656483Z",
+  "finishTime": "2026-10-15T05:09:11.4696098Z"
+}.
+[2026-10-15 05:09:11Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-10-15 05:09:11Z INFO StepsRunner] Current state: job state = ''
+[2026-10-15 05:09:11Z INFO StepsRunner] Processing step: DisplayName='Publish Logs to Branch'
+[2026-10-15 05:09:11Z INFO StepsRunner] Evaluating: always()
+[2026-10-15 05:09:11Z INFO StepsRunner] Result: true
+[2026-10-15 05:09:11Z INFO StepsRunner] Starting the step.
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Temp': '/home/runner/work/_temp'
+[2026-10-15 05:09:11Z INFO ExecutionContext] Write event payload to /home/runner/work/_temp/_github_workflow/event.json
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Temp': '/home/runner/work/_temp'
+[2026-10-15 05:09:11Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-10-15 05:09:11Z INFO ArtifactsListFileCommand] Wrote $GITHUB_ARTIFACTS_LIST with 0 subject(s) to '/home/runner/work/_temp/_runner_file_commands/artifacts_list_1709ac83-cca5-4995-9b68-0e2e9452edaa'
+[2026-10-15 05:09:11Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command error
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command group
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-10-15 05:09:11Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-10-15 05:09:11Z INFO ScriptHandler] Which2: 'bash'
+[2026-10-15 05:09:11Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:11Z INFO HostContext] Well known directory 'Temp': '/home/runner/work/_temp'
+[2026-10-15 05:09:11Z INFO ScriptHandler] Which2: 'bash'
+[2026-10-15 05:09:11Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper] Starting process:
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   File name: '/usr/bin/bash'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   Arguments: '-e /home/runner/work/_temp/1251987d-02af-400a-a931-22fc1abfc952.sh'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   Working directory: '/home/runner/work/cuphead-web-port/cuphead-web-port'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 4772.
+[2026-10-15 05:09:11Z INFO ProcessInvokerWrapper] Process started with process id 4772, waiting for process exit.
+[2026-10-15 05:09:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record '1823b6e8-74f4-4740-b9bf-6a37167bd2fe', success rate: 1/1.
+[2026-10-15 05:09:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:11Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-10-15 05:09:12Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-10-15 05:09:12Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/runner/actions-runner/cached/2.337.0/_diag/blocks/0e67fd90-3e7d-8186-b389-cc03458bf0ff_1823b6e8-74f4-4740-b9bf-6a37167bd2fe.1
+[2026-10-15 05:09:12Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-10-15 05:09:19Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:19Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:19Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:29Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:29Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:29Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:39Z INFO HostContext] Well known directory 'Bin': '/home/runner/actions-runner/cached/2.337.0/bin'
+[2026-10-15 05:09:39Z INFO HostContext] Well known directory 'Root': '/home/runner/actions-runner/cached/2.337.0'
+[2026-10-15 05:09:39Z INFO HostContext] Well known directory 'Work': '/home/runner/work'
+[2026-10-15 05:09:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 1/1.
+[2026-10-15 05:09:40Z INFO JobServerQueue] Try to append 6 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 6/6.
+[2026-10-15 05:09:41Z INFO JobServerQueue] Try to append 6 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 6/6.
+[2026-10-15 05:09:41Z INFO JobServerQueue] Try to append 6 batches web console lines for record 'ebde4a33-3e8d-4663-9d49-6afcaeeb9023', success rate: 6/6.
+[2026-10-15 05:09:42Z INFO JobServerQueue] Got a job log file to send to results service.
+[2026-10-15 05:09:42Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, /home/runner/actions-runner/cached/2.337.0/_diag/blocks/0e67fd90-3e7d-8186-b389-cc03458bf0ff_8af80418-77b9-57dd-aa0c-6d5ed27a15ac.2
