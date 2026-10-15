@@ -103,7 +103,16 @@ jobs:
             fi
           done
           
-          if [ -n "$FOUND_LOG" ]; then
+          if [ -s "$GITHUB_WORKSPACE/build-errors.txt" ]; then
+            echo "Found C# generated build-errors.txt:"
+            cat "$GITHUB_WORKSPACE/build-errors.txt"
+            cp "$GITHUB_WORKSPACE/build-errors.txt" ./build-errors.txt
+            cp "$GITHUB_WORKSPACE/unity-build-report.txt" ./unity-build-report.txt 2>/dev/null || true
+            if [ -n "$FOUND_LOG" ]; then
+              cp "$FOUND_LOG" unity-build.log || true
+              tail -n 400 "$FOUND_LOG" > build-tail.txt || true
+            fi
+          elif [ -n "$FOUND_LOG" ]; then
             cp "$FOUND_LOG" unity-build.log || true
             grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Assertion failed|SIGTRAP|Fatal|Abort)" "$FOUND_LOG" > build-errors.txt || true
             tail -n 400 "$FOUND_LOG" > build-tail.txt || true
@@ -111,7 +120,7 @@ jobs:
             echo "No candidate log found during build job step" > build-errors.txt
             echo "No candidate log found during build job step" > build-tail.txt
           fi
-          git add build-errors.txt build-tail.txt unity-build.log || true
+          git add build-errors.txt build-tail.txt unity-build.log unity-build-report.txt 2>/dev/null || true
           git commit -m "Build logs from run ${{ github.run_id }}" || true
           git push -f origin build-logs || true
 

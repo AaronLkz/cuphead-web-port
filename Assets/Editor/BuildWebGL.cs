@@ -1,7 +1,9 @@
 #if UNITY_EDITOR
 using System;
 using System.IO;
+using System.Text;
 using UnityEditor;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class BuildWebGL
@@ -71,11 +73,44 @@ public class BuildWebGL
         var report = BuildPipeline.BuildPlayer(options);
         Debug.Log("[BuildWebGL] Build process completed with result: " + report.summary.result);
 
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine(string.Format("=== BUILD REPORT: {0} ===", report.summary.result));
+        sb.AppendLine(string.Format("Total Errors: {0}, Total Warnings: {1}, Total Time: {2}", 
+            report.summary.totalErrors, report.summary.totalWarnings, report.summary.totalTime));
+
+        if (report.steps != null)
+        {
+            foreach (var step in report.steps)
+            {
+                if (step.messages != null)
+                {
+                    foreach (var msg in step.messages)
+                    {
+                        if (msg.type == LogType.Error || msg.type == LogType.Exception || msg.type == LogType.Assert)
+                        {
+                            string line = string.Format("[{0}] {1}: {2}", msg.type, step.name, msg.content);
+                            sb.AppendLine(line);
+                            Debug.LogError(line);
+                        }
+                    }
+                }
+            }
+        }
+
+        try
+        {
+            File.WriteAllText("build-errors.txt", sb.ToString());
+            File.WriteAllText("unity-build-report.txt", sb.ToString());
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning("Failed to write build-errors.txt: " + ex.Message);
+        }
+
         if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded)
         {
             string errorMsg = string.Format("[BuildWebGL] Build FAILED! Result: {0}, Total errors: {1}, Total warnings: {2}", 
                 report.summary.result, report.summary.totalErrors, report.summary.totalWarnings);
-            Debug.LogError(errorMsg);
             throw new Exception(errorMsg);
         }
 
