@@ -103,13 +103,14 @@ jobs:
           done
           
           if [ -n "$FOUND_LOG" ]; then
+            cp "$FOUND_LOG" unity-build.log || true
             grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Assertion failed|SIGTRAP|Fatal|Abort)" "$FOUND_LOG" > build-errors.txt || true
             tail -n 400 "$FOUND_LOG" > build-tail.txt || true
           else
             echo "No candidate log found during build job step" > build-errors.txt
             echo "No candidate log found during build job step" > build-tail.txt
           fi
-          git add build-errors.txt build-tail.txt || true
+          git add build-errors.txt build-tail.txt unity-build.log || true
           git commit -m "Build logs from run ${{ github.run_id }}" || true
           git push -f origin build-logs || true
 
@@ -137,55 +138,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  diagnose:
-    name: Diagnose Build Errors
-    needs: build
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch Job Logs via GitHub API
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "=== RETRIEVING FAILED JOB LOGS VIA GH CLI ==="
-          BUILD_JOB_ID=$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs" --jq '.jobs[] | select(.name=="Build WebGL in Cloud") | .id' 2>/dev/null || echo "")
-          echo "Failed Build Job ID: $BUILD_JOB_ID"
-          if [ -n "$BUILD_JOB_ID" ]; then
-            echo "Attempting gh run view --job..."
-            gh run view --job "$BUILD_JOB_ID" --log > /tmp/api_job.log 2>/dev/null || true
-            if [ ! -s /tmp/api_job.log ]; then
-              echo "Attempting redirect URL extraction..."
-              REDIRECT_URL=$(gh api -i "repos/${{ github.repository }}/actions/jobs/$BUILD_JOB_ID/logs" 2>/dev/null | grep -i '^location:' | tr -d '\r' | awk '{print $2}')
-              if [ -n "$REDIRECT_URL" ]; then
-                curl -s -L -o /tmp/api_job.log "$REDIRECT_URL" || true
-              fi
-            fi
-          fi
-          
-          git clone --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git /tmp/log_repo || true
-          cd /tmp/log_repo || exit 0
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan build-logs 2>/dev/null || git checkout -B build-logs || true
-          git rm -rf . 2>/dev/null || true
-          
-          if [ -s /tmp/api_job.log ]; then
-            echo "--- API JOB LOG EXTRACTED SUCCESSFULLY ($(wc -l < /tmp/api_job.log) lines) ---"
-            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Assertion failed|SIGTRAP|Fatal|Abort)" /tmp/api_job.log > build-errors.txt || true
-            tail -n 400 /tmp/api_job.log > build-tail.txt || true
-          else
-            echo "No API job log captured" > build-errors.txt
-            echo "No API job log captured" > build-tail.txt
-          fi
-          git add build-errors.txt build-tail.txt || true
-          git commit -m "Diagnostics from run ${{ github.run_id }}" || true
-          git push -f origin build-logs || true
-
-      - name: Upload Complete Failure Log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: full-failure-log
-          path: /tmp/api_job.log
-          if-no-files-found: ignore
