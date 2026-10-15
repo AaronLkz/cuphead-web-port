@@ -81,15 +81,16 @@ jobs:
           cd /tmp/log_repo || exit 0
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan build-logs 2>/dev/null || git checkout -B build-logs
+          git checkout --orphan build-logs 2>/dev/null || git checkout -B build-logs || true
           git rm -rf . 2>/dev/null || true
-          if [ -f $GITHUB_WORKSPACE/unity-build.log ]; then
-            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Fatal|Abort)" $GITHUB_WORKSPACE/unity-build.log > build-errors.txt || true
-            tail -n 300 $GITHUB_WORKSPACE/unity-build.log > build-tail.txt
+          if [ -f "$GITHUB_WORKSPACE/unity-build.log" ]; then
+            grep -E "(error CS|Compilation failed|Exception|Build FAILED|Build SUCCEEDED|Fatal|Abort)" "$GITHUB_WORKSPACE/unity-build.log" > build-errors.txt || true
+            tail -n 300 "$GITHUB_WORKSPACE/unity-build.log" > build-tail.txt || true
           else
             echo "unity-build.log not found" > build-errors.txt
+            echo "unity-build.log not found" > build-tail.txt
           fi
-          git add build-errors.txt build-tail.txt
+          git add build-errors.txt build-tail.txt || true
           git commit -m "Build logs from run ${{ github.run_id }}" || true
           git push -f origin build-logs || true
 
@@ -117,20 +118,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  diagnose:
-    name: Diagnose Build Errors
-    needs: build
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch and display error log
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          echo "=== DOWNLOADING FAILED LOG VIA GH CLI ==="
-          gh run view ${{ github.run_id }} --repo ${{ github.repository }} --log-failed > failed_log.txt || true
-          echo "=== SEARCHING COMPILER ERRORS ==="
-          grep -E "(error CS|Scripts have compiler errors|Exception|Aborting)" failed_log.txt | head -n 50 || true
-          echo "=== LAST 100 LINES OF FAILED STEP ==="
-          tail -n 100 failed_log.txt

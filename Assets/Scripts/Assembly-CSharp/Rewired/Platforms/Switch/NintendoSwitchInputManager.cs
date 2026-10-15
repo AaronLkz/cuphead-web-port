@@ -1,3 +1,4 @@
+#if UNITY_SWITCH
 using System;
 using System.Collections.Generic;
 using Rewired.Data;
@@ -650,3 +651,4 @@ namespace Rewired.Platforms.Switch
 		}
 	}
 }
+#endif
