@@ -98,3 +98,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  diagnose:
+    name: Diagnose Build Errors
+    needs: build
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch and display error log
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "=== DOWNLOADING FAILED LOG VIA GH CLI ==="
+          gh run view ${{ github.run_id }} --repo ${{ github.repository }} --log-failed > failed_log.txt || true
+          echo "=== SEARCHING COMPILER ERRORS ==="
+          grep -E "(error CS|Scripts have compiler errors|Exception|Aborting)" failed_log.txt | head -n 50 || true
+          echo "=== LAST 100 LINES OF FAILED STEP ==="
+          tail -n 100 failed_log.txt

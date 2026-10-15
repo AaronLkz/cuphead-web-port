@@ -10,8 +10,6 @@ public class GogGalaxyManager : MonoBehaviour
 
 	private static GogGalaxyManager singleton;
 
-	private bool isInitialized = false;
-
 	public static GogGalaxyManager Instance
 	{
 		get

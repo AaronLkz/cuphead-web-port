@@ -18,37 +18,11 @@ namespace Steamworks
 		private GCHandle m_pCCallbackBase;
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		private DispatchDelegate m_Func__BackingField;
+		private DispatchDelegate m_Func;
 
 		private bool m_bGameServer;
 
 		private readonly int m_size = Marshal.SizeOf(typeof(T));
-
-		private event DispatchDelegate m_Func
-		{
-			add
-			{
-				DispatchDelegate dispatchDelegate = this.m_Func;
-				DispatchDelegate dispatchDelegate2;
-				do
-				{
-					dispatchDelegate2 = dispatchDelegate;
-					dispatchDelegate = Interlocked.CompareExchange(ref this.m_Func, (DispatchDelegate)Delegate.Combine(dispatchDelegate2, value), dispatchDelegate);
-				}
-				while ((object)dispatchDelegate != dispatchDelegate2);
-			}
-			remove
-			{
-				DispatchDelegate dispatchDelegate = this.m_Func;
-				DispatchDelegate dispatchDelegate2;
-				do
-				{
-					dispatchDelegate2 = dispatchDelegate;
-					dispatchDelegate = Interlocked.CompareExchange(ref this.m_Func, (DispatchDelegate)Delegate.Remove(dispatchDelegate2, value), dispatchDelegate);
-				}
-				while ((object)dispatchDelegate != dispatchDelegate2);
-			}
-		}
 
 		public Callback(DispatchDelegate func, bool bGameServer = false)
 		{

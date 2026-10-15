@@ -18,7 +18,7 @@ namespace Steamworks
 		private GCHandle m_pCCallbackBase;
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		private APIDispatchDelegate m_Func__BackingField;
+		private APIDispatchDelegate m_Func;
 
 		private SteamAPICall_t m_hAPICall = SteamAPICall_t.Invalid;
 
@@ -29,32 +29,6 @@ namespace Steamworks
 			get
 			{
 				return m_hAPICall;
-			}
-		}
-
-		private event APIDispatchDelegate m_Func
-		{
-			add
-			{
-				APIDispatchDelegate aPIDispatchDelegate = this.m_Func;
-				APIDispatchDelegate aPIDispatchDelegate2;
-				do
-				{
-					aPIDispatchDelegate2 = aPIDispatchDelegate;
-					aPIDispatchDelegate = Interlocked.CompareExchange(ref this.m_Func, (APIDispatchDelegate)Delegate.Combine(aPIDispatchDelegate2, value), aPIDispatchDelegate);
-				}
-				while ((object)aPIDispatchDelegate != aPIDispatchDelegate2);
-			}
-			remove
-			{
-				APIDispatchDelegate aPIDispatchDelegate = this.m_Func;
-				APIDispatchDelegate aPIDispatchDelegate2;
-				do
-				{
-					aPIDispatchDelegate2 = aPIDispatchDelegate;
-					aPIDispatchDelegate = Interlocked.CompareExchange(ref this.m_Func, (APIDispatchDelegate)Delegate.Remove(aPIDispatchDelegate2, value), aPIDispatchDelegate);
-				}
-				while ((object)aPIDispatchDelegate != aPIDispatchDelegate2);
 			}
 		}
 
