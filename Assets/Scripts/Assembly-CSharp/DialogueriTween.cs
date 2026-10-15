@@ -1,9 +1,85 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueriTween : MonoBehaviour
 {
+	private static bool TryGetUIColor(GameObject target, out Color color)
+	{
+		if (target != null)
+		{
+			Image image = target.GetComponentInChildren<Image>();
+			if (image != null)
+			{
+				color = image.color;
+				return true;
+			}
+			Text text = target.GetComponentInChildren<Text>();
+			if (text != null)
+			{
+				color = text.color;
+				return true;
+			}
+		}
+		color = default(Color);
+		return false;
+	}
+
+	private static bool TrySetUIColor(GameObject target, Color color)
+	{
+		if (target != null)
+		{
+			Image image = target.GetComponentInChildren<Image>();
+			if (image != null)
+			{
+				image.color = color;
+				return true;
+			}
+			Text text = target.GetComponentInChildren<Text>();
+			if (text != null)
+			{
+				text.color = color;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private static Sprite TextureToSprite(Texture2D texture)
+	{
+		if (texture == null) return null;
+		return Sprite.Create(
+			texture,
+			new Rect(0, 0, texture.width, texture.height),
+			new Vector2(0.5f, 0.5f));
+	}
+
+	private static Image AddCameraFadeImage(GameObject fadeObject, Texture2D texture)
+	{
+		Canvas canvas = fadeObject.AddComponent<Canvas>();
+		canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+		canvas.sortingOrder = 9999;
+
+		CanvasScaler scaler = fadeObject.AddComponent<CanvasScaler>();
+		scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+
+		GameObject imageObject = new GameObject("Fade Image");
+		imageObject.transform.SetParent(fadeObject.transform, false);
+
+		Image image = imageObject.AddComponent<Image>();
+		image.sprite = TextureToSprite(texture);
+		image.color = new Color(0.5f, 0.5f, 0.5f, 0f);
+
+		RectTransform rect = image.rectTransform;
+		rect.anchorMin = Vector2.zero;
+		rect.anchorMax = Vector2.one;
+		rect.offsetMin = Vector2.zero;
+		rect.offsetMax = Vector2.zero;
+
+		return image;
+	}
+
 	private delegate float EasingFunction(float start, float end, float value);
 
 	private delegate void ApplyTween();
@@ -329,13 +405,9 @@ public class DialogueriTween : MonoBehaviour
 		{
 			args.Add("easetype", EaseType.linear);
 		}
-		if ((bool)target.GetComponent(typeof(GUITexture)))
+		if (TryGetUIColor(target, out Color uiColor))
 		{
-			color2 = (color = target.GetComponent<GUITexture>().color);
-		}
-		else if ((bool)target.GetComponent(typeof(GUIText)))
-		{
-			color2 = (color = target.GetComponent<GUIText>().material.color);
+			color2 = (color = uiColor);
 		}
 		else if ((bool)target.GetComponent<Renderer>())
 		{
@@ -378,13 +450,8 @@ public class DialogueriTween : MonoBehaviour
 			color.a = (float)args["alpha"];
 			args.Remove("alpha");
 		}
-		if ((bool)target.GetComponent(typeof(GUITexture)))
+		if (TrySetUIColor(target, color))
 		{
-			target.GetComponent<GUITexture>().color = color;
-		}
-		else if ((bool)target.GetComponent(typeof(GUIText)))
-		{
-			target.GetComponent<GUIText>().material.color = color;
 		}
 		else if ((bool)target.GetComponent<Renderer>())
 		{
@@ -1197,15 +1264,10 @@ public class DialogueriTween : MonoBehaviour
 
 	private void GenerateColorToTargets()
 	{
-		if ((bool)GetComponent(typeof(GUITexture)))
+		if (TryGetUIColor(gameObject, out Color genColor))
 		{
 			colors = new Color[1, 3];
-			colors[0, 0] = (colors[0, 1] = GetComponent<GUITexture>().color);
-		}
-		else if ((bool)GetComponent(typeof(GUIText)))
-		{
-			colors = new Color[1, 3];
-			colors[0, 0] = (colors[0, 1] = GetComponent<GUIText>().material.color);
+			colors[0, 0] = (colors[0, 1] = genColor);
 		}
 		else if ((bool)GetComponent<Renderer>())
 		{
@@ -1968,13 +2030,8 @@ public class DialogueriTween : MonoBehaviour
 			colors[i, 2].b = ease(colors[i, 0].b, colors[i, 1].b, percentage);
 			colors[i, 2].a = ease(colors[i, 0].a, colors[i, 1].a, percentage);
 		}
-		if ((bool)GetComponent(typeof(GUITexture)))
+		if (TrySetUIColor(gameObject, colors[0, 2]))
 		{
-			GetComponent<GUITexture>().color = colors[0, 2];
-		}
-		else if ((bool)GetComponent(typeof(GUIText)))
-		{
-			GetComponent<GUIText>().material.color = colors[0, 2];
 		}
 		else if ((bool)GetComponent<Renderer>())
 		{
@@ -1991,13 +2048,8 @@ public class DialogueriTween : MonoBehaviour
 		{
 			return;
 		}
-		if ((bool)GetComponent(typeof(GUITexture)))
+		if (TrySetUIColor(gameObject, colors[0, 1]))
 		{
-			GetComponent<GUITexture>().color = colors[0, 1];
-		}
-		else if ((bool)GetComponent(typeof(GUIText)))
-		{
-			GetComponent<GUIText>().material.color = colors[0, 1];
 		}
 		else if ((bool)GetComponent<Renderer>())
 		{
@@ -2542,13 +2594,9 @@ public class DialogueriTween : MonoBehaviour
 		{
 			num = Defaults.updateTime;
 		}
-		if ((bool)target.GetComponent(typeof(GUITexture)))
+		if (TryGetUIColor(target, out Color updateColor))
 		{
-			array[0] = (array[1] = target.GetComponent<GUITexture>().color);
-		}
-		else if ((bool)target.GetComponent(typeof(GUIText)))
-		{
-			array[0] = (array[1] = target.GetComponent<GUIText>().material.color);
+			array[0] = (array[1] = updateColor);
 		}
 		else if ((bool)target.GetComponent<Renderer>())
 		{
@@ -2585,13 +2633,8 @@ public class DialogueriTween : MonoBehaviour
 		array[3].g = Mathf.SmoothDamp(array[0].g, array[1].g, ref array[2].g, num);
 		array[3].b = Mathf.SmoothDamp(array[0].b, array[1].b, ref array[2].b, num);
 		array[3].a = Mathf.SmoothDamp(array[0].a, array[1].a, ref array[2].a, num);
-		if ((bool)target.GetComponent(typeof(GUITexture)))
+		if (TrySetUIColor(target, array[3]))
 		{
-			target.GetComponent<GUITexture>().color = array[3];
-		}
-		else if ((bool)target.GetComponent(typeof(GUIText)))
-		{
-			target.GetComponent<GUIText>().material.color = array[3];
 		}
 		else if ((bool)target.GetComponent<Renderer>())
 		{
@@ -3293,7 +3336,11 @@ public class DialogueriTween : MonoBehaviour
 	{
 		if ((bool)cameraFade)
 		{
-			cameraFade.GetComponent<GUITexture>().texture = texture;
+			Image image = cameraFade.GetComponentInChildren<Image>();
+			if (image != null)
+			{
+				image.sprite = TextureToSprite(texture);
+			}
 		}
 	}
 
@@ -3304,10 +3351,7 @@ public class DialogueriTween : MonoBehaviour
 			return null;
 		}
 		cameraFade = new GameObject("iTween Camera Fade");
-		cameraFade.transform.position = new Vector3(0.5f, 0.5f, depth);
-		cameraFade.AddComponent<GUITexture>();
-		cameraFade.GetComponent<GUITexture>().texture = texture;
-		cameraFade.GetComponent<GUITexture>().color = new Color(0.5f, 0.5f, 0.5f, 0f);
+		AddCameraFadeImage(cameraFade, texture);
 		return cameraFade;
 	}
 
@@ -3318,10 +3362,7 @@ public class DialogueriTween : MonoBehaviour
 			return null;
 		}
 		cameraFade = new GameObject("iTween Camera Fade");
-		cameraFade.transform.position = new Vector3(0.5f, 0.5f, Defaults.cameraFadeDepth);
-		cameraFade.AddComponent<GUITexture>();
-		cameraFade.GetComponent<GUITexture>().texture = texture;
-		cameraFade.GetComponent<GUITexture>().color = new Color(0.5f, 0.5f, 0.5f, 0f);
+		AddCameraFadeImage(cameraFade, texture);
 		return cameraFade;
 	}
 
@@ -3332,10 +3373,7 @@ public class DialogueriTween : MonoBehaviour
 			return null;
 		}
 		cameraFade = new GameObject("iTween Camera Fade");
-		cameraFade.transform.position = new Vector3(0.5f, 0.5f, Defaults.cameraFadeDepth);
-		cameraFade.AddComponent<GUITexture>();
-		cameraFade.GetComponent<GUITexture>().texture = CameraTexture(Color.black);
-		cameraFade.GetComponent<GUITexture>().color = new Color(0.5f, 0.5f, 0.5f, 0f);
+		AddCameraFadeImage(cameraFade, CameraTexture(Color.black));
 		return cameraFade;
 	}
 
